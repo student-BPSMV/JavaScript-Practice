@@ -1,0 +1,802 @@
+/* *{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin:  15px;
+}
+
+input{
+    padding: 8px;
+    border: 2px solid black;
+    border-radius: 7px;
+    margin-right: 8px;
+    font-size: medium;
+}
+.btn{
+    padding: 8px;
+    margin-left: 160px;
+    border: 2px solid black;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: medium;
+}
+#operator{
+    margin-right: 8px;
+    padding: 8px;
+    font-weight: bold;
+    font-size: medium;
+    border: 2px solid black;
+    border-radius: 7px;
+}
+#output{
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    margin-left: 10px;
+    padding : 8px;
+    border: 2px solid black;
+    border-radius: 7px;
+    /* padding-left: 15px; 
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 80vh;
+    font-family: "Orbitron", sans-serif;
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(0, 119, 255, 0.15), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(130, 40, 255, 0.18), transparent 30%),
+        linear-gradient(135deg, #05091d, #0a1230 50%, #12072d);
+
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.main-container {
+    width: 100%;
+    max-width: 800px;
+
+    text-align: center;
+
+    padding: 30px 20px;
+}
+
+
+.main-container > h1 {
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: 2px;
+
+    background: linear-gradient(
+        90deg,
+        #4da3ff,
+        #42e6c5,
+        #c16cff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    text-shadow:
+        0 0 20px rgba(70, 150, 255, 0.25);
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   ONLINE GAME
+========================= */
+
+.main-container > h2 {
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: 9px;
+
+    color: #a8b9db;
+
+    margin-bottom: 35px;
+
+    position: relative;
+}
+
+.main-container > h2::before,
+.main-container > h2::after {
+    content: "";
+
+    display: inline-block;
+
+    width: 110px;
+    height: 2px;
+
+    vertical-align: middle;
+
+    margin: 0 25px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #4ca6ff
+    );
+}
+
+.main-container > h2::after {
+    background: linear-gradient(
+        90deg,
+        #bd65ff,
+        transparent
+    );
+}
+
+
+/* =========================
+   GAME CONTAINER
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 30px 50px 40px;
+
+    border-radius: 30px;
+
+    background: rgba(13, 23, 48, 0.78);
+
+    border: 1px solid rgba(92, 160, 255, 0.45);
+
+    box-shadow:
+        0 0 20px rgba(0, 132, 255, 0.15),
+        0 0 50px rgba(120, 50, 255, 0.10),
+        inset 0 0 30px rgba(255, 255, 255, 0.02);
+
+    backdrop-filter: blur(18px);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Gradient border glow */
+
+.container::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 30px;
+
+    padding: 1px;
+
+    background: linear-gradient(
+        120deg,
+        #269cff,
+        transparent 30%,
+        transparent 70%,
+        #b74cff
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+
+    mask-composite: exclude;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   SCORE TITLE
+========================= */
+
+.container > h1 {
+    font-size: 30px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 35px;
+
+    color: #f5f7ff;
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================
+   PLAYERS
+========================= */
+
+.players {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    margin-bottom: 42px;
+}
+
+
+/* =========================
+   COMPUTER / PLAYER
+========================= */
+
+.computer,
+.user {
+    width: 40%;
+
+    max-height: 180px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-evenly;
+
+    padding: 15px;
+
+    border-radius: 22px;
+
+    background: rgba(20, 31, 59, 0.65);
+
+    border: 1px solid rgba(72, 145, 255, 0.4);
+
+    box-shadow:
+        inset 0 0 20px rgba(60, 130, 255, 0.04),
+        0 0 20px rgba(30, 130, 255, 0.08);
+}
+
+
+/* Player side */
+
+.user {
+    border-color: rgba(52, 218, 158, 0.35);
+
+    box-shadow:
+        inset 0 0 20px rgba(52, 218, 158, 0.04),
+        0 0 20px rgba(52, 218, 158, 0.08);
+}
+
+
+/* Icons */
+
+.computer > i,
+.user > i {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+
+    color: #438fff;
+
+    background: rgba(40, 100, 220, 0.08);
+
+    border: 1px solid rgba(55, 140, 255, 0.35);
+
+    box-shadow:
+        0 0 20px rgba(40, 130, 255, 0.12);
+}
+
+
+.user > i {
+    color: #4fe09f;
+
+    border-color: rgba(55, 220, 155, 0.3);
+}
+
+
+/* Text */
+
+.computer p:first-child,
+.user p:first-child {
+    color: #aebdda;
+
+    font-size: 15px;
+
+    margin-bottom: 12px;
+
+    font-weight: 500;
+}
+
+
+/* Score */
+
+.computer p:last-child,
+.user p:last-child {
+    font-size: 42px;
+
+    font-weight: 700;
+
+    color: #438fff;
+
+    text-shadow:
+        0 0 15px rgba(50, 130, 255, 0.5);
+}
+
+
+.user p:last-child {
+    color: #4fe09f;
+
+    text-shadow:
+        0 0 15px rgba(50, 220, 150, 0.5);
+}
+
+
+/* =========================
+   VS CIRCLE
+========================= */
+
+.vs-circle {
+    width: 68px;
+    height: 68px;
+
+    flex-shrink: 0;
+
+    margin: 0 -5px;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #254ed4,
+            #663bb8
+        );
+
+    border: 2px solid rgba(110, 140, 255, 0.7);
+
+    box-shadow:
+        0 0 20px rgba(85, 80, 255, 0.5),
+        inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.vs-circle p {
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: white;
+}
+
+
+/* =========================
+   CHOOSE YOUR MOVE
+========================= */
+
+.container > h2 {
+    font-size: 18px;
+
+    letter-spacing: 5px;
+
+    color: #aabbdc;
+
+    margin-bottom: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+.container > h2::before,
+.container > h2::after {
+    content: "";
+
+    width: 50px;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #7184bd
+    );
+}
+
+.container > h2::after {
+    background: linear-gradient(
+        90deg,
+        #7184bd,
+        transparent
+    );
+}
+
+.choice-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    font-size: 15px;
+    margin-bottom: 25px;
+    margin-top: -10px;
+}
+
+#computer-ans , #user-ans{
+    margin-left: -15px;
+    font-size: small;
+    color: #7184bd;
+}
+
+/* =========================
+   GAME BUTTONS
+========================= */
+
+.box {
+    display: inline-flex;
+
+    width: 150px;
+    height: 180px;
+
+    margin: 0 5px;
+
+    border-radius: 22px;
+
+    vertical-align: top;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    padding-bottom: 25px;
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-size: 65%;
+
+    border: 2px solid;
+}
+
+
+/* Hover */
+
+.box:hover {
+    transform: translateY(-10px) scale(1.03);
+}
+
+
+/* =========================
+   ROCK
+========================= */
+
+.rock {
+    border-color: #269cff;
+
+    background-color: rgba(30, 80, 180, 0.12);
+
+    background-image: url("images/rock.png");
+
+    box-shadow:
+        0 0 20px rgba(38, 156, 255, 0.3),
+        inset 0 0 30px rgba(38, 156, 255, 0.08);
+}
+
+.rock:hover {
+    box-shadow:
+        0 0 30px rgba(38, 156, 255, 0.65),
+        inset 0 0 30px rgba(38, 156, 255, 0.12);
+}
+
+
+/* =========================
+   PAPER
+========================= */
+
+.paper {
+    border-color: #35dcb0;
+
+    background-color: rgba(20, 140, 120, 0.12);
+
+    background-image: url("images/paper.png");
+
+    box-shadow:
+        0 0 20px rgba(53, 220, 176, 0.3),
+        inset 0 0 30px rgba(53, 220, 176, 0.08);
+}
+
+.paper:hover {
+    box-shadow:
+        0 0 30px rgba(53, 220, 176, 0.65),
+        inset 0 0 30px rgba(53, 220, 176, 0.12);
+}
+
+
+/* =========================
+   SCISSORS
+========================= */
+
+.scissors {
+    border-color: #a74dff;
+
+    background-color: rgba(110, 40, 190, 0.12);
+
+    background-image: url("images/scissors.png");
+
+    box-shadow:
+        0 0 20px rgba(167, 77, 255, 0.3),
+        inset 0 0 30px rgba(167, 77, 255, 0.08);
+}
+
+.scissors:hover {
+    box-shadow:
+        0 0 30px rgba(167, 77, 255, 0.7),
+        inset 0 0 30px rgba(167, 77, 255, 0.12);
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+.reset {
+    border-color: #ffab32;
+
+    background-color: rgba(180, 100, 20, 0.12);
+
+    background-image: url("images/reset.png");
+
+    box-shadow:
+        0 0 20px rgba(255, 171, 50, 0.3),
+        inset 0 0 30px rgba(255, 171, 50, 0.08);
+}
+
+.reset:hover {
+    box-shadow:
+        0 0 30px rgba(255, 171, 50, 0.7),
+        inset 0 0 30px rgba(255, 171, 50, 0.12);
+}
+
+
+/* =========================
+   BUTTON LABELS
+========================= */
+
+.rock::after {
+    content: "ROCK";
+}
+
+.paper::after {
+    content: "PAPER";
+}
+
+.scissors::after {
+    content: "SCISSORS";
+}
+
+.reset::after {
+    content: "RESET";
+}
+
+.box::after {
+    font-size: 17px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================
+   BOTTOM TIP
+========================= */
+
+.container::after {
+
+    display: block;
+
+    width: 70%;
+
+    margin: 38px auto 0;
+
+    padding: 15px 20px;
+
+    border-radius: 30px;
+
+    background: rgba(20, 32, 65, 0.65);
+
+    border: 1px solid rgba(70, 120, 220, 0.3);
+
+    color: #aebddd;
+
+    font-size: 13px;
+
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 0 15px rgba(50, 100, 200, 0.08);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+
+    .main-container > h1 {
+        font-size: 35px;
+    }
+
+    .box {
+        width: 160px;
+        height: 220px;
+    }
+
+    .computer,
+    .user {
+        width: 43%;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    .main-container {
+        padding: 25px 15px;
+    }
+
+    .main-container > h1 {
+        font-size: 27px;
+    }
+
+    .main-container > h2 {
+        font-size: 13px;
+        letter-spacing: 5px;
+    }
+
+    .main-container > h2::before,
+    .main-container > h2::after {
+        width: 40px;
+        margin: 0 10px;
+    }
+
+    .container {
+        padding: 30px 15px;
+    }
+
+    .container > h1 {
+        font-size: 32px;
+    }
+
+    .players {
+        flex-direction: column;
+
+        gap: 0;
+    }
+
+    .computer,
+    .user {
+        width: 90%;
+    }
+
+    .vs-circle {
+        margin: -8px 0;
+
+        width: 55px;
+        height: 55px;
+    }
+
+    .box {
+        width: 43%;
+        height: 190px;
+
+        margin: 5px;
+    }
+
+    .container::after {
+        width: 90%;
+        line-height: 1.7;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .main-container > h1 {
+        font-size: 22px;
+    }
+
+    .container > h1 {
+        font-size: 27px;
+    }
+
+    .container > h2 {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .computer,
+    .user {
+        min-height: 110px;
+    }
+
+    .computer > i,
+    .user > i {
+        width: 60px;
+        height: 60px;
+
+        font-size: 27px;
+    }
+
+    .computer p:last-child,
+    .user p:last-child {
+        font-size: 32px;
+    }
+
+    .box {
+        width: 44%;
+        height: 165px;
+
+        background-size: 55%;
+    }
+
+    .box::after {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <h1>ROCK PAPER SCISSORS</h1>
+        <h2>ONLINE GAME</h2>
+        <div class="container">
+            <h1>SCORE</h1>
+            <div class="players">
+                <div class="computer">
+                    <i class="fa-solid fa-computer"></i>
+                    <div>
+                        <p>Computer</p>
+                        <p id="computer-score">0</p>
+                    </div>
+                </div>
+                <div class="vs-circle">
+                    <p>VS</p>
+                </div>
+                <div class="user">
+                    <i class="fa-solid fa-circle-user"></i>
+                     <div>
+                        <p>Player</p>
+                        <p id="user-score">0</p>
+                    </div>
+                </div>
+            </div>
+            <h2 id="result">CHOOSE YOUR MOVE</h2>
+            <div class="choice-container">
+                <h3>COMPUTER's CHOICE :</h3><p id="computer-ans">Null</p>
+                <h3>USER's CHOICE :</h3>
+                <p id="user-ans">Null</p>
+            </div>
+           
+            <div class="box rock"></div>
+            <div class="box paper"></div>
+            <div class="box scissors"></div>
+            <div class="box reset" id="reset"></div>
+        </div>
+    </div>
+    <script src="code12.js"></script>
+</body>
+</html>

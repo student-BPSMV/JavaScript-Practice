@@ -1,0 +1,48 @@
+1. How do you find the length of a string?
+ Use the .length property.
+ let text = "Javascript"; console.log(text.length); // 10
+
+
+2. How do you convert a string to uppercase or lowercase?
+ Use the .toUpperCase() and .toLowerCase() methods.
+ let text = "Hi"; console.log(text.toUpperCase()); // "HI"
+
+
+3. How do you find the index (position) of a specific character or word?
+ Use the .indexOf() method. It returns -1 if the word is not found.
+ let text = "Hello World"; console.log(text.indexOf("World")); // 6
+
+
+4. How do you check if a specific word exists inside a string?
+ Use the .includes() method. It returns true or false.
+ let text = "I love coding"; console.log(text.includes("love")); // true
+
+
+5. How do you extract a part (substring) of a string?
+ Use the .slice() or .substring() methods.
+ let text = "Apple, Banana"; console.log(text.slice(0, 5)); // "Apple"
+
+
+6. How do you replace a specific word in a string?
+ Use .replace() (this replaces only the first match). To replace all occurrences, use .replaceAll().
+ let text = "Hello John"; console.log(text.replace("John", "Rahul")); // "Hello Rahul"
+
+
+7. How do you split a string into an Array?
+ Use the .split() method and provide a separator (like a comma or space).
+ let text = "a,b,c"; console.log(text.split(",")); // ["a", "b", "c"]
+
+
+8. How do you remove extra spaces from the beginning and end of a string?
+ Use the .trim() method.
+ let text = "   Hello   "; console.log(text.trim()); // "Hello"
+
+
+9. How do you join (concatenate) two or more strings together?
+ Use the + operator, or Template Literals (```) for cleaner syntax.
+ let a = "Hi", b = "User"; console.log(${a}${b}); // "Hi User"
+
+
+10. How do you find which character is at a specific position (index)?
+ Use the .charAt() method or bracket notation [].
+ let text = "JS"; console.log(text[0]); // "J"
