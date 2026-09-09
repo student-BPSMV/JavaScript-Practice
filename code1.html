@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .container{
+            margin : 100px;
+            margin-left : 500px;
+        }
+       button{
+        padding : 5px;
+        margin :20px;
+        margin-left : 70px;
+        width : 80px;
+        height: 40px;
+        font-weight: bold;
+        border-radius: 5px;
+        color: white;
+        background-color: green;
+        border: 2px solid green;
+
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="bulb" src="../All_Code/images/turnoffbulb.jpg" width="200px" height="300px"><br>
+        <button id="btn" onclick="toggle()">ON</button>
+    </div>
+
+    <script>
+        function toggle(){
+            let bulb = document.getElementById("bulb");
+            let buttonDemo = document.getElementById("btn");
+
+            if(buttonDemo.innerText === "ON"){
+                buttonDemo.innerText = "OFF";
+                bulb.src = "../All_Code/images/turnonbulb.jpg";
+                bulb.style.width = "300px";
+                buttonDemo.style.backgroundColor = "red";
+                buttonDemo.style.borderColor = "red";
+                
+            }else{
+                buttonDemo.innerText = "ON";
+                bulb.src = "../All_Code/images/turnoffbulb.jpg";
+                bulb.style.width = "200px";
+            }
+        }
+
+    </script>
+</body>
+</html>
