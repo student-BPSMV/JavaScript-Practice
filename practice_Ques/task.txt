@@ -1,0 +1,182 @@
+🟢 Level 1 — Promise Basics
+1. Create a Basic Promise
+
+Create a Promise that immediately resolves with:
+
+"Data loaded successfully"
+
+Use .then() to print the result.
+
+2. Resolve or Reject
+
+Create a Promise using:
+
+let isLoggedIn = true;
+If isLoggedIn is true → resolve "Welcome user"
+Otherwise → reject "Please login first"
+
+Handle both using .then() and .catch().
+
+3. Promise with setTimeout
+
+Create a function:
+
+getData()
+
+It should return a Promise that resolves after 2 seconds with:
+
+["Apple", "Banana", "Mango"]
+
+Display the data using .then().
+
+🟡 Level 2 — .then(), .catch() & .finally()
+4. Random Success/Failure
+
+Create a Promise that has a 50% chance of resolving and a 50% chance of rejecting.
+
+Use Math.random().
+
+Print:
+
+Success!
+
+or
+
+Failed!
+
+depending on the result.
+
+5. Promise Chaining
+
+Start with:
+
+Promise.resolve(10)
+
+Then chain .then() operations to:
+
+Multiply by 2
+Add 5
+Multiply by 3
+
+Print the final result.
+
+Expected output:
+
+75
+6. Use finally()
+
+Create a Promise that resolves after 2 seconds.
+
+Use:
+
+.then()
+.catch()
+.finally()
+
+Make finally() print:
+
+Promise execution completed
+🟠 Level 3 — Understand Promise Behavior
+7. Predict the Output ⭐
+
+Without running the code, predict the exact order:
+
+const promise = new Promise((resolve) => {
+    console.log("Promise started");
+    resolve("Promise resolved");
+});
+
+console.log("After promise");
+
+promise.then((result) => {
+    console.log(result);
+});
+
+Then explain why that order occurs.
+
+8. Find and Fix the Mistake
+
+What's wrong with this function?
+
+function getUser() {
+    new Promise((resolve, reject) => {
+        resolve("User found");
+    });
+}
+
+getUser().then((user) => {
+    console.log(user);
+});
+
+Fix the code so that "User found" gets printed.
+
+🔵 Level 4 — Real-World Practice
+9. Fake Login System
+
+Create:
+
+loginUser(username, password)
+
+It should return a Promise.
+
+After 2 seconds:
+
+username "admin" + password "1234" → resolve "Login successful"
+Otherwise → reject "Invalid username or password"
+
+Handle both cases.
+
+10. Fake Payment System
+
+Create:
+
+makePayment(amount)
+
+Return a Promise.
+
+After 2 seconds:
+
+amount > 0 → resolve "Payment successful"
+amount <= 0 → reject "Invalid payment amount"
+
+Use .then(), .catch(), and .finally().
+
+🔴 Level 5 — Mini Challenges
+11. User → Products
+
+Create two Promise-returning functions:
+
+getUser()
+getProducts()
+
+getUser() should return:
+
+{
+    id: 101,
+    name: "Nandini"
+}
+
+getProducts() should return:
+
+["Laptop", "Phone", "Headphones"]
+
+Use Promise chaining to first get the user and then get the products.
+
+12. Fake API Request ⭐
+
+Create:
+
+fetchUser()
+
+It should return a Promise that resolves after 2 seconds with:
+
+{
+    id: 1,
+    name: "John",
+    email: "john@gmail.com"
+}
+
+Then use .then() to display:
+
+User: John
+Email: john@gmail.com
