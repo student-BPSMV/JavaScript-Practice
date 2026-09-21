@@ -1,0 +1,421 @@
+/* From Uiverse.io by chase2k25 */ 
+.container {
+  --bg: #f8fafc;
+  --metal: #cbd5e1;
+  --metal-light: #f1f5f9;
+  --metal-dark: #64748b;
+  --screen-bg: #ffffff;
+  --ring-red: #ff3b30;
+  --ring-green: #10b981;
+  --ring-blue: #0ea5e9;
+  --accent: #10b981;
+  --text-main: #0f172a;
+  --text-dim: #94a3b8;
+  --case-shadow: rgba(0, 0, 0, 0.12);
+
+  --watch-size: 340px;
+  --screen-size: 300px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  margin: 0;
+  min-height: 100%;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  background-image: radial-gradient(
+      circle at 20% 20%,
+      #ecfdf5 0%,
+      transparent 40%
+    ),
+    radial-gradient(circle at 80% 80%, #f0fdf4 0%, transparent 40%);
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+.container input[type="radio"] {
+  display: none;
+}
+
+.watch-container {
+  position: relative;
+  width: var(--watch-size);
+  height: var(--watch-size);
+  perspective: 2000px;
+}
+
+.strap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 200px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  z-index: 1;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.05);
+}
+.strap.top {
+  top: -160px;
+  background: linear-gradient(to top, #e2e8f0, #f8fafc);
+}
+.strap.bottom {
+  bottom: -160px;
+  background: linear-gradient(to bottom, #e2e8f0, #f8fafc);
+}
+
+.watch-case {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    var(--metal-light) 0%,
+    var(--metal) 70%,
+    var(--metal-dark) 100%
+  );
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow:
+    0 40px 80px var(--case-shadow),
+    inset 0 2px 2px rgba(255, 255, 255, 0.8),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 2px solid #94a3b8;
+}
+
+.pusher {
+  position: absolute;
+  width: 14px;
+  height: 28px;
+  background: linear-gradient(to right, #cbd5e1, #f1f5f9);
+  border: 1px solid #64748b;
+  border-radius: 4px;
+  z-index: 5;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.p-top {
+  top: 20%;
+  right: 2%;
+  transform: rotate(45deg);
+}
+.p-bottom {
+  bottom: 20%;
+  right: 2%;
+  transform: rotate(-45deg);
+}
+
+.main-crown {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 44px;
+  background: linear-gradient(to bottom, #94a3b8, #f1f5f9, #94a3b8);
+  border: 1.5px solid #64748b;
+  border-radius: 6px;
+  z-index: 15;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.1);
+}
+.main-crown::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  border-radius: 4px;
+}
+
+.display-unit {
+  width: var(--screen-size);
+  height: var(--screen-size);
+  background: var(--screen-bg);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+  border: 6px solid #4d608fdb;
+}
+
+.display-unit::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  z-index: 100;
+  pointer-events: none;
+  transition: 0.8s var(--ease);
+}
+
+.bezel-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.view-wrapper {
+  width: 500%;
+  height: 100%;
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.view {
+  width: 20%;
+  height: 100%;
+  padding: 50px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--text-main);
+  text-align: center;
+}
+
+.complication-arc {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 6px solid #f1f5f9;
+}
+.arc-fill {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 6px solid transparent;
+  border-top-color: var(--accent);
+  transform: rotate(-45deg);
+}
+
+.solar-time .h2 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 45px;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -4px;
+  color: var(--text-main);
+}
+.solar-time span {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.grid-circle {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
+  width: 100%;
+  max-width: 200px;
+}
+.circular-app {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f1f5f9;
+}
+.circular-app svg {
+  width: 24px;
+  height: 24px;
+}
+
+.health-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.health-ring {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 10px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.health-ring svg {
+  width: 40px;
+  height: 40px;
+  fill: var(--ring-green);
+}
+
+.nav {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 150;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.4s var(--ease);
+}
+
+#v1:checked ~ .watch-container .view-wrapper {
+  transform: translateX(0);
+}
+#v2:checked ~ .watch-container .view-wrapper {
+  transform: translateX(-20%);
+}
+#v3:checked ~ .watch-container .view-wrapper {
+  transform: translateX(-40%);
+}
+#v4:checked ~ .watch-container .view-wrapper {
+  transform: translateX(-60%);
+}
+#v5:checked ~ .watch-container .view-wrapper {
+  transform: translateX(-80%);
+}
+
+#v1:checked ~ .watch-container .d1 {
+  background: var(--text-main);
+  width: 14px;
+  border-radius: 3px;
+}
+#v2:checked ~ .watch-container .d2 {
+  background: var(--text-main);
+  width: 14px;
+  border-radius: 3px;
+}
+#v3:checked ~ .watch-container .d3 {
+  background: var(--text-main);
+  width: 14px;
+  border-radius: 3px;
+}
+#v4:checked ~ .watch-container .d4 {
+  background: var(--text-main);
+  width: 14px;
+  border-radius: 3px;
+}
+#v5:checked ~ .watch-container .d5 {
+  background: var(--text-main);
+  width: 14px;
+  border-radius: 3px;
+}
+
+.container svg {
+  fill: currentColor;
+}
+/* From Uiverse.io by absoluteSTrange */ 
+button {
+  padding: 17px 40px;
+  border-radius: 10px;
+  border: 0;
+  background-color: rgb(255, 56, 86);
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+}
+
+button:active {
+  background-color: rgb(255, 56, 86);
+  /*50, 168, 80*/
+  box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+  transform: translateY(5px);
+  transition: 200ms;
+}
+.start { 
+  padding: 17px 40px; 
+  border-radius: 10px; 
+  border: 0; 
+  background-color: rgb(34, 197, 94); 
+  letter-spacing: 1.5px; 
+  font-size: 15px; 
+  transition: all 0.3s ease; 
+  box-shadow: rgb(21, 128, 61) 0px 10px 0px 0px; 
+  color: hsl(0, 0%, 100%); 
+  cursor: pointer; 
+} 
+ 
+.start:hover { 
+  box-shadow: rgb(22, 101, 52) 0px 7px 0px 0px; 
+} 
+ 
+.start:active { 
+  background-color: rgb(22, 163, 74); 
+  box-shadow: rgb(22, 101, 52) 0px 0px 0px 0px; 
+  transform: translateY(5px); 
+  transition: 200ms; 
+}.reset { 
+  padding: 17px 40px; 
+  border-radius: 10px; 
+  border: 0; 
+  background-color: rgb(245, 158, 11); 
+  letter-spacing: 1.5px; 
+  font-size: 15px; 
+  transition: all 0.3s ease; 
+  box-shadow: rgb(180, 83, 9) 0px 10px 0px 0px; 
+  color: hsl(0, 0%, 100%); 
+  cursor: pointer; 
+} 
+
+.reset:hover { 
+  box-shadow: rgb(146, 64, 14) 0px 7px 0px 0px; 
+} 
+
+.reset:active { 
+  background-color: rgb(217, 119, 6); 
+  box-shadow: rgb(146, 64, 14) 0px 0px 0px 0px; 
+  transform: translateY(5px); 
+  transition: 200ms; 
+}
+.button-group{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
