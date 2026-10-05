@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       let arr = ["Creative Designer", "Full-Stack Developer", "Problem Solver"];
+
+let index = 0;
+let charIndex = 0;
+let direction = 1;
+
+let parsingInterval = setInterval(() => {
+
+    let current = arr[index];
+
+    if (direction === 1) {
+
+        process.stdout.write("\r" + current.slice(0, charIndex + 1) + "|");
+        charIndex++;
+
+        if (charIndex === current.length) {
+            direction = -1;
+        }
+
+    } else {
+
+        process.stdout.write("\r" + current.slice(0, charIndex) + "|");
+        charIndex--;
+
+        if (charIndex < 0) {
+            direction = 1;
+            charIndex = 0;
+
+            index++;
+
+            if (index === arr.length) {
+                index = 0;
+            }
+        }
+    }
+}, 200);
+        
+    </script>
+</body>
+</html>

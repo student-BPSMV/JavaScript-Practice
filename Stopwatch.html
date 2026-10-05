@@ -98,21 +98,50 @@
         let dateHeading = document.querySelector("#date");
         let dayHeading = document.querySelector("#day");
 
-        let startInterval;
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+        let startInterval = null;
+        
         function startWatch() {
+            if (startInterval !== null) {
+                return;
+            }
             startInterval = setInterval(() => {
-                let time = new Date().toLocaleTimeString();
-                timeHeading.innerText = time;
-            }, 1000);
-        };
+                seconds++;
+                if (seconds === 60) {
+                    seconds = 0;
+                    minutes++;
+                }
+                if (minutes === 60) {
+                    minutes = 0;
+                    hours++;
+                }
+                
+                let h = String(hours).padStart(2, "0");
+                let m = String(minutes).padStart(2, "0");
+                let s = String(seconds).padStart(2, "0");timeHeading.innerText = `${h}:${m}:${s}`;
+            }, 100);
+        }
 
         function stopWatch() {
             clearInterval(startInterval);
-        };
+            startInterval = null;
+        }
 
-        function resetWatch(){
+        function resetWatch() {
+            clearInterval(startInterval);
+            startInterval = null;
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
             timeHeading.innerText = "00:00:00";
-        };
+        }
+        
+        StartBtn.addEventListener("click", startWatch);
+        StopBtn.addEventListener("click", stopWatch);
+        ResetBtn.addEventListener("click", resetWatch);
 
         function changeDay() {
             let dayNum = new Date().getDay();
@@ -138,12 +167,11 @@
             dateHeading.innerText = `Date :  ${date}`; 
         };
 
-        StartBtn.addEventListener("click" , startWatch);
-        StopBtn.addEventListener("click" , stopWatch);
-        ResetBtn.addEventListener("click" , resetWatch);
         changeDay();
         changeDate();
-
+        
     </script>
-</body> 
-</html>
+    </body>
+    </html>
+
+    

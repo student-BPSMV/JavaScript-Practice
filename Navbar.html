@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        .sideMenu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 200px;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.26);
+            backdrop-filter: blur(20px);
+            transition: all 0.4s linear;
+            padding: 30px;
+        }
+
+        .sideMenu.active {
+            right: 0;
+        }
+
+        .burgerIcon {
+            cursor: pointer;
+        }
+
+        .closeMenu {
+            font-size: 50px;
+            border: 3px solid white;
+            text-align: center;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="flex bg-purple-800 py-3 text-white justify-around text-2xl font-serif font-bold">
+
+        <div class="logo">
+            LOGO
+        </div>
+
+        <div class="burgerIcon sm:inline md:hidden">
+            ⏸️
+        </div>
+
+        <div>
+            <ul class="lg:flex md:flex gap-10 justify-around items-center hidden">
+                <li>Home</li>
+                <li>About</li>
+                <li>Projects</li>
+                <li>Services</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+
+        <!-- Side Menu -->
+        <div class="sideMenu">
+
+            <div>
+                <div class="closeMenu">
+                    &times;
+                </div>
+            </div>
+
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Projects</li>
+                <li>Services</li>
+                <li>Contact</li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-start px-10">
+      <!-- Greeting -->
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-2">
+        Hello, I'm
+      </h2>
+
+      <!-- Name -->
+      <h1 class="text-5xl md:text-7xl font-extrabold text-purple-800 leading-tight">
+        NANDINI
+      </h1>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-purple-300 leading-tight">
+        SHARMA
+      </h1>
+      <h1 class="text-2xl font-bold py-2">
+        I am a
+        <span id="role"></span>
+      </h1>
+
+      <!-- Tagline -->
+      <p class="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl font-medium">
+        Full Stack MERN Developer & Trainer with a passion for building
+        beautiful, functional, and scalable web applications.  
+        <span class="block mt-2 text-purple-800 font-semibold">
+          I turn complex logic into smooth digital experiences.
+        </span>
+      </p>
+    </section>
+    <!-- Cards Section -->
+    <section class="text-gray-600 body-font">
+
+        <div class="container px-5 py-20 mx-auto">
+
+            <div class="flex flex-wrap -m-4">
+
+
+                <!-- Coding Card -->
+                <div class="p-4 lg:w-1/3">
+
+                    <div
+                        class="h-full bg-white px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative shadow-2xl border-2 border-transparent
+                        transition-all duration-500 ease-out
+                        hover:border-purple-800
+                        hover:-translate-y-3
+                        hover:shadow-purple-300">
+
+                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                        </h2>
+
+                        <h1 class="text-4xl font-bold text-purple-800 mb-3" id="coding">
+                            1000+
+                        </h1>
+
+                        <p class="leading-relaxed mb-3">
+                            Hours of Coding
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Students Card -->
+                <div class="p-4 lg:w-1/3">
+
+                    <div
+                        class="h-full bg-white px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative shadow-2xl border-2 border-transparent
+                        transition-all duration-500 ease-out
+                        hover:border-purple-800
+                        hover:-translate-y-3
+                        hover:shadow-purple-300">
+
+                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                        </h2>
+
+                        <h1 class="text-4xl font-bold text-purple-800 mb-3" id="students">
+                            500+
+                        </h1>
+
+                        <p class="leading-relaxed mb-3">
+                            Students Trained
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Projects Card -->
+                <div class="p-4 lg:w-1/3">
+
+                    <div
+                        class="h-full bg-white px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative shadow-2xl border-2 border-transparent
+                        transition-all duration-500 ease-out
+                        hover:border-purple-800
+                        hover:-translate-y-3
+                        hover:shadow-purple-300">
+
+                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                        </h2>
+
+                        <h1 class="text-4xl font-bold text-purple-800 mb-3" id="projects">
+                            20+
+                        </h1>
+
+                        <p class="leading-relaxed mb-3">
+                            Projects Completed
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        const burgerIcon = document.querySelector(".burgerIcon");
+        const sideMenu = document.querySelector(".sideMenu");
+        const closeMenu = document.querySelector(".closeMenu");
+
+        const coding = document.querySelector("#coding");
+        const students = document.querySelector("#students");
+        const projects = document.querySelector("#projects");
+
+
+        // Open Menu
+        burgerIcon.addEventListener("click", () => {
+            sideMenu.classList.toggle("active");
+        });
+
+
+        // Close Menu
+        closeMenu.addEventListener("click", () => {
+            sideMenu.classList.remove("active");
+        });
+
+
+        // Coding Counter
+        let startCodingInterval = null;
+        let Codingcount = 0;
+
+        function startCodingLoading() {
+
+            startCodingInterval = setInterval(() => {
+
+                Codingcount++;
+
+                coding.innerText = `${Codingcount}+`;
+
+                if (Codingcount >= 1000) {
+                    clearInterval(startCodingInterval);
+                }
+
+            }, 5);
+        }
+
+
+        // Students Counter
+        let startStudentsInterval = null;
+        let Studentscount = 0;
+
+        function startStudentsLoading() {
+
+            startStudentsInterval = setInterval(() => {
+
+                Studentscount++;
+
+                students.innerText = `${Studentscount}+`;
+
+                if (Studentscount >= 500) {
+                    clearInterval(startStudentsInterval);
+                }
+
+            }, 10);
+        }
+
+
+        // Projects Counter
+        let startProjectsInterval = null;
+        let Projectscount = 0;
+
+        function startProjectsLoading() {
+
+            startProjectsInterval = setInterval(() => {
+
+                Projectscount++;
+
+                projects.innerText = `${Projectscount}+`;
+
+                if (Projectscount >= 20) {
+                    clearInterval(startProjectsInterval);
+                }
+
+            }, 100);
+        }
+
+
+        // Start Counters
+        startCodingLoading();
+        startStudentsLoading();
+        startProjectsLoading();
+
+        let arr = ["Creative Designer", "Full-Stack Developer", "Problem Solver"];
+        let index = 0;
+        let charIndex = 0;
+        let direction = 1;
+        let role = document.getElementById("role");
+        setInterval(() => {
+            let current = arr[index];
+            role.textContent = current.slice(0, charIndex) + "|";
+            if (direction === 1) {
+                charIndex++;
+                if (charIndex > current.length) {
+                    direction = -1;
+                    charIndex = current.length;
+                }
+            } else {
+                charIndex--;
+                if (charIndex < 0) {
+                    direction = 1;
+                    charIndex = 0;
+                    index++;
+                    if (index === arr.length) {
+                        index = 0;
+                    }
+                }
+            }
+        }, 200);
+
+    </script>
+
+</body>
+
+</html>
