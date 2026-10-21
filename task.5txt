@@ -1,0 +1,37 @@
+// •  Reverse a String (Without Built-in Methods)
+// Write a function that takes a string (e.g., "javascript") and returns it reversed ("tpircsavaj") using only a for loop, without using .reverse().
+
+// •  Find the Second Largest Number in an Array
+// Given an array of numbers like [12, 35, 1, 10, 34, 1, 35], find the second largest unique number (34) in a single pass (one loop) without sorting the array.
+
+// •  Check for Anagrams
+// Write a function to check if two strings are anagrams of each other (contain the exact same characters in the same frequency, e.g., "listen" and "silent").
+// 	Input: "dormitory", "dirtyroom" → Output: true
+
+// •  Character Frequency Counter
+// Given a string, return an object where the keys are the characters and the values are the number of times each character appears.
+// 	Input: "hello" → Output: { h: 1, e: 1, l: 2, o: 1 }
+
+// •  Flatten a Deeply Nested Array
+// Write a recursive function that flattens a multi-dimensional array into a single-level array without using the built-in .flat() method.
+// 	Input: [1, [2, [3, [4]], 5]] → Output: [1, 2, 3, 4, 5]
+
+// •  Two Sum (Target Sum Pair)
+// Given an array of integers and a target number, return the indices of the two numbers that add up to the target. Try to solve it in O(n) time complexity using an object/hash map rather than nested loops.
+// 	Input: nums = [2, 7, 11, 15], target = 9 → Output: [0, 1]
+
+// •  Move All Zeros to the End
+// Given an array of numbers, move all 0s to the end of it while maintaining the relative order of the non-zero elements. Do this in-place without making a copy of the array.
+// 	Input: [0, 1, 0, 3, 12] → Output: [1, 3, 12, 0, 0]
+
+// •  Find the First Non-Repeating Character
+// Write a function that takes a string and returns the first character that does not repeat anywhere in the string. If all characters repeat, return null.
+// 	Input: "swiss" → Output: "w"
+
+// •  Group Array of Objects by a Property
+// Given an array of objects (e.g., users with role), group them into an object based on that property using .reduce().
+// 	Input: [{ name: 'Aman', role: 'admin' }, { name: 'Riya', role: 'user' }, { name: 'Karan', role: 'admin' }]
+// 	Output: { admin: [{ name: 'Aman', role: 'admin' }, { name: 'Karan', role: 'admin' }], user: [{ name: 'Riya', role: 'user' }] }
+
+// •  Implement a Custom debounce Function (Core JS Logic)
+// Write a debounce(fn, delay) function that limits how often a function fn can be executed. It should only invoke fn after delay milliseconds have passed since the last time the debounced function was called (commonly asked in frontend interviews for search bars).

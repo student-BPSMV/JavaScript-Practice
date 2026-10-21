@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Events Example</title>
+  </head>
+  <body>
+    <form id="myForm">
+      <input type="text" id="name" placeholder="Enter your name" />
+      <input type="email" id="email" placeholder="Enter your email" />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="message"></p>
+
+    <script>
+      const form = document.getElementById("myForm");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const message = document.getElementById("message");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Perform form validation
+        if (nameInput.value.trim() === "" || emailInput.value.trim() === "") {
+          message.textContent = "Please fill out all fields.";
+          return;
+        }
+
+        // If the form is valid, display a success message
+        message.textContent = "Form submitted successfully!";
+      });
+
+      nameInput.addEventListener("input", function () {
+        // Clear the message when the name input is changed
+        message.textContent = "input";
+      });
+
+      emailInput.addEventListener("input", function () {
+        // Clear the message when the email input is changed
+        message.textContent = "email";
+      });
+    </script>
+  </body>
+</html>

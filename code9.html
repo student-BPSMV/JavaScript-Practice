@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code9</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box"></div> -->
+     <input type="text" id="textInput" placeholder="Enter the data:">
+     <h1 id="para">loading...</h1>
+    <script>
+        // let box = document.querySelector(".box");
+        
+        // box.addEventListener("click" , () => {
+        //     box.style.backgroundColor = "pink";
+        // });
+
+        // box.addEventListener("mouseup" , () => {
+        //     box.style.opacity = ".5";
+        // });
+
+        // let inputBox = document.querySelector("#textInput");
+        // let output = document.querySelector("#para");
+
+        // inputBox.addEventListener("keydown" , (event) => {
+        //     output.innerText = `key pressed : ${event.key}`;
+        // });
+
+        //  inputBox.addEventListener("keyup" , (event) => {
+        //     output.innerText = `key pressed : ${event.key}`;
+        // });
+
+         inputBox.addEventListener("keypress" , (event) => {
+            output.innerText = `key pressed : ${event.key}`;
+        });
+
+    </script>
+</body>
+</html>
