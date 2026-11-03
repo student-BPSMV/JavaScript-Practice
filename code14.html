@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake API Card Generator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        padding: 30px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #38bdf8;
+      }
+      /* Grid Layout for Cards */
+      .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      /* Individual Card Style */
+      .card {
+        background: #1e293b;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border: 1px solid #334155;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(56, 189, 248, 0.1);
+      }
+      .card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        color: #f1f5f9;
+      }
+      .card p {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-bottom: 6px;
+      }
+      .card span {
+        color: #38bdf8;
+        font-weight: 500;
+      }
+      .loading {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #94a3b8;
+        grid-column: 1 / -1;
+        padding: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Movie Search</h1>
+
+    <!-- Jahan cards inject honge -->
+    <div id="cardContainer" class="card-container">
+      <div class="loading">Loading cards from API...</div>
+    </div>
+
+    <script>
+      const container = document.getElementById("cardContainer");
+
+      // Fake API URL (Yeh 10 users ka dummy data degi)
+      const API_URL = "https://www.omdbapi.com/?i=tt3896198&apikey=37781d27";
+
+      // Data fetch karne ka function
+      async function fetchUsers() {
+        try {
+          const response = await fetch(API_URL);
+          const users = await response.json();
+
+          // Loading text hatayein
+          container.innerHTML = "";
+
+          // Har ek user ke liye card banayein
+          users.forEach((user) => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+                        <h3>👤 ${user.name}</h3>
+                        <p>Username: <span>@${user.username}</span></p>
+                        <p>Email: <span>${user.email}</span></p>
+                        <p>City: <span>${user.address.city}</span></p>
+                        <p>Company: <span>${user.company.name}</span></p>
+                    `;
+
+            container.appendChild(card);
+          });
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          container.innerHTML = `<div class="loading" style="color: #ef4444;">Failed to load data. Please try again!</div>`;
+        }
+      }
+
+      // Function call
+      fetchUsers();
+    </script>
+  </body>
+</html>
